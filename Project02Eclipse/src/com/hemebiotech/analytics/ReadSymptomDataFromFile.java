@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hemebiotech.analytics.interfaces.ISymptomReader;
+
 /**
  * Simple brute force implementation
  *
@@ -13,7 +15,24 @@ import java.util.List;
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	private String filepath;
+	private static int headacheCount = 0; // initialize to 0
+	private static int rashCount = 0; // initialize to 0
+	private static int pupilCount = 0; // initialize to 0
 	
+//	Getters
+
+	public static int getHeadacheCount() {
+		return headacheCount;
+	}
+
+	public static int getRashCount() {
+		return rashCount;
+	}
+
+	public static int getPupilCount() {
+		return pupilCount;
+	}
+
 	/**
 	 * 
 	 * @param filepath a full or partial path to file with symptom strings in it, one per line
@@ -22,25 +41,30 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		this.filepath = filepath;
 	}
 	
-	@Override
 	public List<String> getSymptoms() {
-		ArrayList<String> result = new ArrayList<String>();
-		
-		if (filepath != null) {
-			try {
-				BufferedReader reader = new BufferedReader (new FileReader(filepath));
-				String line = reader.readLine();
-				
-				while (line != null) {
-					result.add(line);
-					line = reader.readLine();
+		ArrayList<String> result = new ArrayList<>();		
+		String line;
+
+		try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
+
+			while ((line = reader.readLine()) != null) {
+
+				System.out.println("symptom from file: " + line);
+				if (line.equals("headache")) {
+					headacheCount++;
+					System.out.println("number of headaches: " + headacheCount);
+				} else if (line.equals("rash")) {
+					rashCount++;
+					System.out.println("number of rash: " + rashCount);
+
+				} else if (line.contains("pupils")) {
+					pupilCount++;
+					System.out.println("number of pupils: " + pupilCount);
 				}
-				reader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
 		return result;
 	}
 
