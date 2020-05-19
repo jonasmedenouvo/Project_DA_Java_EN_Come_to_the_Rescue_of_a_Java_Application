@@ -15,9 +15,9 @@ import com.hemebiotech.analytics.interfaces.ISymptomReader;
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	private String filepath;
-	private static int headacheCount = 0; // initialize to 0
-	private static int rashCount = 0; // initialize to 0
-	private static int pupilCount = 0; // initialize to 0
+	private static int headacheCount = 0;
+	private static int rashCount = 0; 
+	private static int pupilCount = 0;
 	
 //	Getters
 
@@ -46,7 +46,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		String line;
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
-
+//AMeliorer avec MAp et integrer variables dans la méthodes. Puis trie alphabetiques dans le writer
+			//gerer exception si 
 			while ((line = reader.readLine()) != null) {
 
 				System.out.println("symptom from file: " + line);
@@ -64,6 +65,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.out.println(e+"message erreur");
+			
 		}
 		return result;
 	}

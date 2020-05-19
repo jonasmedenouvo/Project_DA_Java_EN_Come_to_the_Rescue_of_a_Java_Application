@@ -7,7 +7,7 @@ public class AnalyticsCounter {
 	 * Application Launcher
 	 */
 	public static void main(String[] args) {
-		
+		//etapes Lire, compter, trier, ecrire
 //		Read File
 		String filepath = "symptoms.txt";
 		ReadSymptomDataFromFile reader = new ReadSymptomDataFromFile(filepath);
