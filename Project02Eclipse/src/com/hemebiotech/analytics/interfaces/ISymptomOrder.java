@@ -1,10 +1,9 @@
 package com.hemebiotech.analytics.interfaces;
 
-import java.util.List;
+import java.util.Map;
 
 public interface ISymptomOrder {
 
-	void orderData(List<String> liste);
-
+	public Map<String, Integer> orderData(Map<String, Integer> map);
 
 }

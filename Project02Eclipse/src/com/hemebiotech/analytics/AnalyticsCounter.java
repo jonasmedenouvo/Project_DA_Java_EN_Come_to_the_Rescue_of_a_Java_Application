@@ -18,16 +18,16 @@ public class AnalyticsCounter {
 		
 //		Count Symptoms
 		CountSymptomDataFromFile counting = new CountSymptomDataFromFile();
-		counting.sortData(liste);
+		Map<String, Integer> countReturn = counting.sortData(liste);
 		
 ////		Order symptoms
-//		OrderSymptomDataToFile orderfile =new OrderSymptomDataToFile();
-//		orderfile.orderData(liste);
+		OrderSymptomDataToFile orderfile =new OrderSymptomDataToFile();
+		Map<String, Integer> OrderReturn = orderfile.orderData(countReturn);
 		
 		
 //		Write output
-//		String outpath="result.out";
-//		WriteSymptomDataToFile writer = new WriteSymptomDataToFile(outpath);
-//		writer.writeData();
+		String outpath="result.out";
+		WriteSymptomDataToFile writer = new WriteSymptomDataToFile(outpath);
+		writer.writeData(OrderReturn);
 	}
 }

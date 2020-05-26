@@ -1,7 +1,7 @@
 package com.hemebiotech.analytics.interfaces;
 
-import java.util.List;
+import java.util.Map;
 
 public interface ISymptomWriter {
-	List<String> writeData();
+	Map<String, Integer> writeData(Map<String, Integer> treemap);
 }

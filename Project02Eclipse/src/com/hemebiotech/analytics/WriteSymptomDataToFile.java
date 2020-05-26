@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import com.hemebiotech.analytics.interfaces.ISymptomWriter;
 
@@ -19,26 +20,23 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
 	/**
 	 * generate a List of String to write in a File
 	 */
-	public Map<String, Integer> writeData(List<String> readList) {
-		Map<String, Integer> output = new HashMap<>();
+	public Map<String, Integer> writeData(Map<String, Integer> treemap) {
 
 		try (FileWriter writer = new FileWriter(outpath)) {
-			for (Map.Entry<String, Integer> entry : output.entrySet()) {
+			for (Map.Entry<String, Integer> entry : treemap.entrySet()) {
 
-				writer.write(entry.getKey() + entry.getValue() + "\n");
+				writer.write(entry.getKey() +": "+ entry.getValue() + "\n");
 
 			}
-
 			writer.flush();
+			System.out.println("Document crée");
 		} catch (IOException i) {
+			
 			i.printStackTrace();
 		}
-		return output;
+		return treemap;
 	}
 
-	@Override
-	public List<String> writeData() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+
 }
