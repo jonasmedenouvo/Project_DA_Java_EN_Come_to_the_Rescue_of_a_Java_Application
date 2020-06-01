@@ -34,8 +34,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		String line;
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
-//TODO AMeliorer avec MAp et integrer variables dans la méthodes. Puis trie alphabetiques dans le writer
-			// TODO gerer exception si
+//	AMeliorer avec MAp et integrer variables dans la méthodes. Puis trie alphabetiques dans le writer
+//	gerer exception si
 			while ((line = reader.readLine()) != null) {
 				result.add(line);
 

@@ -3,7 +3,6 @@
  */
 package com.hemebiotech.analytics.interfaces;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -12,5 +11,5 @@ import java.util.Map;
  */
 public interface ISymptomCounter {
 
-	public Map<String, Integer> sortData(List<String> list);
+	public Map<String, Integer> sortData();
 }

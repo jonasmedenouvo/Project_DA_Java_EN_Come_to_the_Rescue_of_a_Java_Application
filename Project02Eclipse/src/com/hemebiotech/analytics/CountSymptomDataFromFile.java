@@ -5,20 +5,25 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-//import java.util.Map.Entry;
 
 import com.hemebiotech.analytics.interfaces.ISymptomCounter;
 
 import java.util.Set;
 
 public class CountSymptomDataFromFile implements ISymptomCounter {
+	private List<String> readFiles;
+
+	public CountSymptomDataFromFile(List<String> readFiles) {
+		this.readFiles = readFiles;
+	}
+
 	/**
 	 * Count number of cases by symptoms
 	 * 
 	 * @param readFiles
 	 * @return hmap
 	 */
-	public Map<String, Integer> sortData(List<String> readFiles) {
+	public Map<String, Integer> sortData() {
 
 		Set<String> set = new HashSet<>(readFiles);
 		Map<String, Integer> hmap = new HashMap<>();
@@ -28,16 +33,7 @@ public class CountSymptomDataFromFile implements ISymptomCounter {
 
 			hmap.put(string, occurrences);
 		}
-		/**
-		 * uncomment to show symptoms
-		 */
-//		for (Entry<String, Integer> entry : hmap.entrySet()) {
-//			String key = entry.getKey();
-//			Integer value = entry.getValue();
-//
-//			System.out.println(key + " " + value);
-//
-//		}
+
 		return hmap;
 	}
 

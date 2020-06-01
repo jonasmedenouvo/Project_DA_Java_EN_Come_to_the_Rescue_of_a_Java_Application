@@ -10,24 +10,23 @@ public class AnalyticsCounter {
 	 * Application Launcher
 	 */
 	public static void main(String[] args) {
-		//etapes Lire, compter, trier, ecrire
 //		Read file
 		String filepath = "symptoms.txt";
 		ReadSymptomDataFromFile reader = new ReadSymptomDataFromFile(filepath);
 		List<String> liste =reader.getSymptoms();
 		
 //		Count Symptoms
-		CountSymptomDataFromFile counting = new CountSymptomDataFromFile();
-		Map<String, Integer> countReturn = counting.sortData(liste);
+		CountSymptomDataFromFile counting = new CountSymptomDataFromFile(liste);
+		Map<String, Integer> countReturn = counting.sortData();
 		
-////		Order symptoms
-		OrderSymptomDataToFile orderfile =new OrderSymptomDataToFile();
-		Map<String, Integer> OrderReturn = orderfile.orderData(countReturn);
+//		Order symptoms
+		OrderSymptomDataToFile orderfile =new OrderSymptomDataToFile(countReturn);
+		Map<String, Integer> orderReturn = orderfile.orderData();
 		
 		
 //		Write output
 		String outpath="result.out";
-		WriteSymptomDataToFile writer = new WriteSymptomDataToFile(outpath);
-		writer.writeData(OrderReturn);
+		WriteSymptomDataToFile writer = new WriteSymptomDataToFile(outpath, orderReturn);
+		writer.writeData();
 	}
 }
