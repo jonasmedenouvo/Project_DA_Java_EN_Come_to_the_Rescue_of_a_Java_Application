@@ -1,14 +1,10 @@
 package com.hemebiotech.analytics;
 
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
 import com.hemebiotech.analytics.interfaces.ISymptomCounter;
-
-import java.util.Set;
 
 public class CountSymptomDataFromFile implements ISymptomCounter {
 	private List<String> readFiles;
@@ -25,13 +21,15 @@ public class CountSymptomDataFromFile implements ISymptomCounter {
 	 */
 	public Map<String, Integer> sortData() {
 
-		Set<String> set = new HashSet<>(readFiles);
 		Map<String, Integer> hmap = new HashMap<>();
+		for (String string : readFiles) {
 
-		for (String string : set) {
-			int occurrences = Collections.frequency(readFiles, string);
+			if (hmap.containsKey(string)) {
+				hmap.put(string, hmap.get(string) + 1);
 
-			hmap.put(string, occurrences);
+			} else {
+				hmap.put(string, 1);
+			}
 		}
 
 		return hmap;

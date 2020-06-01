@@ -11,5 +11,5 @@ public interface ISymptomReader {
  * 
  * @return
  */
-	List<String> getSymptoms();
+	List<String> readSymptoms();
 }

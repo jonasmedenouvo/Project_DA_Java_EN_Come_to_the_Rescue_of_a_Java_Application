@@ -13,7 +13,7 @@ public class AnalyticsCounter {
 //		Read file
 		String filepath = "symptoms.txt";
 		ReadSymptomDataFromFile reader = new ReadSymptomDataFromFile(filepath);
-		List<String> liste =reader.getSymptoms();
+		List<String> liste =reader.readSymptoms();
 		
 //		Count Symptoms
 		CountSymptomDataFromFile counting = new CountSymptomDataFromFile(liste);

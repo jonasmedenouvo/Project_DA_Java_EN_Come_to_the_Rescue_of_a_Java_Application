@@ -29,7 +29,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		this.filepath = filepath;
 	}
 
-	public List<String> getSymptoms() {
+	public List<String> readSymptoms() {
 		List<String> result = new ArrayList<>();
 		String line;
 
