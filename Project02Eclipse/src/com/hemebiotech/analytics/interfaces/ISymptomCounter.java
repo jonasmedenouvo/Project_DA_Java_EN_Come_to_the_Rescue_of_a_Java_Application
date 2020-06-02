@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * @author jonas
- *
+ * Count Symptoms in Files
  */
 public interface ISymptomCounter {
 

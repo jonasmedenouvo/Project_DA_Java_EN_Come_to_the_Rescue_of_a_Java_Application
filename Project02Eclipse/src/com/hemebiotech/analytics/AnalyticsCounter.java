@@ -11,31 +11,35 @@ import java.util.Map;
 public class AnalyticsCounter {
 	
 	public static void main(String[] args) {
-//		Read file
-		String filepath = "symptoms.txt";
-		ReadSymptomDataFromFile reader = new ReadSymptomDataFromFile(filepath);
-		List<String> liste = null;
+		
 		try {
+//			Read file
+			String filepath = "symptoms.txt";
+			ReadSymptomDataFromFile reader = new ReadSymptomDataFromFile(filepath);
+			List<String> liste = null;
 			liste = reader.readSymptoms();
-		} catch (IOException e) {
-			System.out.println("READING ERROR: "+e.getMessage());
-		}
+			
+//			Count Symptoms
+			CountSymptomDataFromFile counting = new CountSymptomDataFromFile(liste);
+			Map<String, Integer> countReturn = counting.countData();
 
-//		Count Symptoms
-		CountSymptomDataFromFile counting = new CountSymptomDataFromFile(liste);
-		Map<String, Integer> countReturn = counting.countData();
+//			Sort symptoms
+			SortSymptomDataToFile sortfile = new SortSymptomDataToFile(countReturn);
+			Map<String, Integer> sortReturn = sortfile.sortData();
 
-//		Sort symptoms
-		SortSymptomDataToFile sortfile = new SortSymptomDataToFile(countReturn);
-		Map<String, Integer> sortReturn = sortfile.sortData();
-
-//		Write output
-		String outpath = "result.out";
-		WriteSymptomDataToFile writer = new WriteSymptomDataToFile(outpath, sortReturn);
-		try {
+//			Write output
+			String outpath = "result.out";
+			WriteSymptomDataToFile writer = new WriteSymptomDataToFile(outpath, sortReturn);
 			writer.writeData();
-		} catch (IOException w) {
-			System.out.println("WRITING ERROR: "+w.getMessage());
+
+			
+		} catch (IOException e) {
+			System.out.println("ERROR: "+e.getMessage());
+			e.printStackTrace();
+			System.exit(-1);
 		}
+
+
+		
 	}
 }

@@ -10,8 +10,7 @@ import com.hemebiotech.analytics.interfaces.ISymptomReader;
 
 /**
  * 
- * @author jonas
- * Read selected file
+ * @author jonas Read selected file
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
@@ -34,19 +33,15 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	public List<String> readSymptoms() throws IOException {
 		List<String> result = new ArrayList<>();
 		String line;
-		if (filepath != null) {
-			try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
 
-				while ((line = reader.readLine()) != null) {
-					result.add(line);
+		try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
 
-				}
-			} 
-			return result;
-		} else {
-			System.out.println("Aucun fichier à lire sélectionné");
-			return null;
+			while ((line = reader.readLine()) != null) {
+				result.add(line);
+
+			}
 		}
+		return result;
 
 	}
 }
