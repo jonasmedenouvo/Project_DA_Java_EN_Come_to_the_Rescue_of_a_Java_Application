@@ -4,6 +4,6 @@ import java.util.Map;
 
 public interface ISymptomOrder {
 
-	public Map<String, Integer> orderData();
+	public Map<String, Integer> sortData();
 
 }

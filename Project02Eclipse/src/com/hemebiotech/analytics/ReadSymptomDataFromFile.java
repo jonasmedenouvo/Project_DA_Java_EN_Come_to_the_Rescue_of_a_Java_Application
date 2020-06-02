@@ -9,8 +9,9 @@ import java.util.List;
 import com.hemebiotech.analytics.interfaces.ISymptomReader;
 
 /**
- * Simple brute force implementation
- *
+ * 
+ * @author jonas
+ * Read selected file
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 

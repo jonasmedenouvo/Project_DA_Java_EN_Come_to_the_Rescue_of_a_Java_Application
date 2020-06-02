@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.util.Map;
 import com.hemebiotech.analytics.interfaces.ISymptomWriter;
 
+/**
+ * 
+ * @author jonas
+ * Write in chosen file
+ */
 public class WriteSymptomDataToFile implements ISymptomWriter {
 
 	private String outpath;
@@ -17,8 +22,9 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
 
 	/**
 	 * generate a List of String to write in a File
+	 * @throws IOException 
 	 */
-	public Map<String, Integer> writeData() {
+	public Map<String, Integer> writeData() throws IOException {
 
 		try (FileWriter writer = new FileWriter(outpath)) {
 			for (Map.Entry<String, Integer> entry : treemap.entrySet()) {
@@ -28,9 +34,6 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
 			}
 			writer.flush();
 			System.out.println("Document crée");
-		} catch (IOException i) {
-
-			i.printStackTrace();
 		}
 		return treemap;
 	}

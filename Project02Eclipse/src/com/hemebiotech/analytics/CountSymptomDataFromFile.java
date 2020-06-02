@@ -6,6 +6,11 @@ import java.util.Map;
 
 import com.hemebiotech.analytics.interfaces.ISymptomCounter;
 
+/**
+ * 
+ * @author jonas
+ * Count number of cases by symptoms
+ */
 public class CountSymptomDataFromFile implements ISymptomCounter {
 	private List<String> readFiles;
 
@@ -14,12 +19,10 @@ public class CountSymptomDataFromFile implements ISymptomCounter {
 	}
 
 	/**
-	 * Count number of cases by symptoms
 	 * 
-	 * @param readFiles
 	 * @return hmap
 	 */
-	public Map<String, Integer> sortData() {
+	public Map<String, Integer> countData() {
 
 		Map<String, Integer> hmap = new HashMap<>();
 		for (String string : readFiles) {

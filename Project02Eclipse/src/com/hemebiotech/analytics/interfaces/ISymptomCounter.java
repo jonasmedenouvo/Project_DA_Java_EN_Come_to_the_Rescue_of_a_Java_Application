@@ -11,5 +11,5 @@ import java.util.Map;
  */
 public interface ISymptomCounter {
 
-	public Map<String, Integer> sortData();
+	public Map<String, Integer> countData();
 }
