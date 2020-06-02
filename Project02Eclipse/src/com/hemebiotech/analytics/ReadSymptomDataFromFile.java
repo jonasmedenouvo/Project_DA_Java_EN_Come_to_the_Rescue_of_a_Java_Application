@@ -1,6 +1,7 @@
 package com.hemebiotech.analytics;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,23 +30,22 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		this.filepath = filepath;
 	}
 
-	public List<String> readSymptoms() {
+	public List<String> readSymptoms() throws IOException {
 		List<String> result = new ArrayList<>();
 		String line;
+		if (filepath != null) {
+			try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
 
-		try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
-//	AMeliorer avec MAp et integrer variables dans la méthodes. Puis trie alphabetiques dans le writer
-//	gerer exception si
-			while ((line = reader.readLine()) != null) {
-				result.add(line);
+				while ((line = reader.readLine()) != null) {
+					result.add(line);
 
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println(e + "message erreur");
-
+				}
+			} 
+			return result;
+		} else {
+			System.out.println("Aucun fichier à lire sélectionné");
+			return null;
 		}
-		return result;
-	}
 
+	}
 }

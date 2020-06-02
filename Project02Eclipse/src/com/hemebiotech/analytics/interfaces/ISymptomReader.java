@@ -1,5 +1,6 @@
 package com.hemebiotech.analytics.interfaces;
 
+import java.io.IOException;
 import java.util.List;
 /**
  * 
@@ -10,6 +11,8 @@ public interface ISymptomReader {
 /**
  * 
  * @return
+ * @throws IOException 
+ * @throws  
  */
-	List<String> readSymptoms();
+	List<String> readSymptoms() throws IOException;
 }
