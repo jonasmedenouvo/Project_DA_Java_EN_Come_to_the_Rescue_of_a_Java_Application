@@ -14,14 +14,19 @@ import com.hemebiotech.analytics.interfaces.ISymptomCounter;
 public class CountSymptomDataFromFile implements ISymptomCounter {
 	private List<String> readFiles;
 
+	/**
+	 * Constructor with @param
+	 * @param readFiles
+	 */
 	public CountSymptomDataFromFile(List<String> readFiles) {
 		this.readFiles = readFiles;
 	}
 
 	/**
-	 * 
-	 * @return hmap
+	 * Count number of cases by symptoms
+	 * @return Map
 	 */
+	@Override
 	public Map<String, Integer> countData() {
 
 		Map<String, Integer> hmap = new HashMap<>();

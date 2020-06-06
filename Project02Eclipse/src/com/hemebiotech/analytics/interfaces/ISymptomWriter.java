@@ -1,8 +1,12 @@
 package com.hemebiotech.analytics.interfaces;
 
 import java.io.IOException;
-import java.util.Map;
 
+/**
+ * 
+ * @author jonas 
+ * Write data in file
+ */
 public interface ISymptomWriter {
-	Map<String, Integer> writeData() throws IOException;
+	void writeData() throws IOException;
 }
